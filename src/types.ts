@@ -1,7 +1,7 @@
-type Sections = "intro" | "features" | "useCases" | "contact";
+// type Sections = "intro" | "features" | "useCases" | "contact";
 
 export type ScrollPosition = {
-  sectionId: Sections;
+  sectionId: string;
   progress: number;
 };
 

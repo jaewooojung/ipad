@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <IPad3D />
-      <Components />
+      {/* <Components /> */}
     </>
   );
 }
