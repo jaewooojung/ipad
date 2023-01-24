@@ -1,15 +1,14 @@
-import { createContext, useCallback, useMemo, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 import { ScrollPosition } from "../types";
-import { sectionDatas } from "../data";
 
 function noProviderHandler(contextName: string) {
   console.error(`Cannot found ${contextName} Provider`);
 }
 
-const initialState = {
+const initialState: { scrollPosition: ScrollPosition; d_setScrollPosition: () => void } = {
   scrollPosition: {
-    sectionId: sectionDatas[0].id,
+    sectionId: "intro",
     progress: 0,
   },
   d_setScrollPosition: () => noProviderHandler("ScrollPositionAPIContext - d_setScrollPosition"),

@@ -1,7 +1,6 @@
 import clsx from "clsx";
 
 import { sectionDatas } from "../../../data";
-import { getScrollY } from "../../../utils/common";
 import { useContext } from "react";
 import { ScrollPositionContext } from "./../../../context/scrollPosition";
 import { SectionData } from "../../../types";
@@ -22,15 +21,15 @@ function NavLink({ data, progress }: { data: SectionData; progress: number }) {
   return (
     <li
       className={clsx(
-        "relative px-5 py-1 border-[1px] rounded-3xl border-white text-xl tracking-widest cursor-pointer overflow-hidden",
+        "relative px-5 py-1 border-1 rounded-3xl border-white text-xl tracking-widest cursor-pointer overflow-hidden",
         "hover:bg-white hover:text-black transition duration-300"
       )}
     >
       <div
-        className="absolute inset-0 border-[1px] bg-white origin-left"
+        className="absolute inset-0 border-1 bg-white origin-left"
         style={{ transform: `scaleX(${progress})` }}
       ></div>
-      <div className="relative mix-blend-difference">{data.name}</div>
+      <div className={clsx("relative mix-blend-difference", "hover:mix-blend-normal")}>{data.name}</div>
     </li>
   );
 }

@@ -1,2 +1,7 @@
 This website is clone of https://pad.dotincorp.com/. (godly.website)
-for my portfolio
+for portfolio
+
+Using
+Vite
+react-three-fiber
+tailwind

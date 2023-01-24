@@ -5,7 +5,7 @@ import Usecases from "./Usecases";
 
 function Main() {
   return (
-    <main className="">
+    <main>
       <Intro />
       <Features />
       <Usecases />
