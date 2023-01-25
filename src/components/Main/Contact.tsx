@@ -1,8 +1,9 @@
 import { Section } from "../reuse";
 import { sectionDatas } from "../../data";
 
-function Contact() {
-  const size = sectionDatas[3].scrollBoundary[1] - sectionDatas[3].scrollBoundary[0];
+const size = sectionDatas[3].scrollBoundary[1] - sectionDatas[3].scrollBoundary[0];
+
+function Contact({ contactProgress }: { contactProgress: number }) {
   return <Section size={size}>Contact</Section>;
 }
 

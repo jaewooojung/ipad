@@ -1,39 +1,31 @@
 import clsx from "clsx";
+import { memo } from "react";
+import { sectionDatas } from "../../../data";
+import { Sequence } from "../../../types";
+import { linearEquation, quadraticEquation } from "../../../utils/math";
 
-/**
- * step 1(0.2)
- */
-function BeyondWords({ progress }: { progress: number }) {
-  let scale = (-1 / Math.pow(0.5, 2)) * progress + 1;
-  scale = Math.max(scale, 0);
-  const opacity = (-1 / 0.1) * progress + 1;
+function BeyondWords({ introProgress, sequence }: { introProgress: number; sequence: Sequence }) {
+  // if (introProgress === -1) {
+  //   return null;
+  // }
+  console.log("BeyondWords");
+  const [start, end] = sequence[0].interval;
+  const scale = quadraticEquation(introProgress, { x: start, y: 1 }, { x: end, y: 0 });
+  const opacity = linearEquation(introProgress, { x: start, y: 1 }, { x: end, y: 0 });
   return (
-    <div className="relative w-full h-full flex justify-center items-center">
-      <div
-        className={clsx("text-center text-6xl text-9x text-10", "sm:text-10xl")}
-        style={{
-          transform: `scale(${scale})`,
-          opacity: opacity,
-        }}
-      >
-        <div className="mb-10">
-          <div className="bg-clip-text bg-gradient-to-b from-white via-white to-black text-transparent">Beyond</div>
-        </div>
-        <div>Words</div>
+    <div
+      className={clsx("text-center text-6xl text-9x text-10", "sm:text-10xl")}
+      style={{
+        transform: `scale(${scale})`,
+        opacity: opacity,
+      }}
+    >
+      <div className="mb-10">
+        <div className="bg-clip-text bg-gradient-to-b from-white via-white to-black text-transparent">Beyond</div>
       </div>
-      <div
-        className="absolute bottom-10 text-center"
-        style={{
-          opacity: opacity,
-        }}
-      >
-        <div className="w-5 h-9 flex justify-center items-center border-1 rounded-xl border-white">
-          <div className="w-1 h-3 rounded-xl bg-white animate-flowdown"></div>
-        </div>
-        <div className="rotate-180">^</div>
-      </div>
+      <div>Words</div>
     </div>
   );
 }
 
-export default BeyondWords;
+export default memo(BeyondWords);
