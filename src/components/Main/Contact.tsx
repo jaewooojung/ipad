@@ -1,5 +1,9 @@
+import { Section } from "../reuse";
+import { sectionDatas } from "../../data";
+
 function Contact() {
-  return <section className="h-screen">Contact</section>;
+  const size = sectionDatas[3].scrollBoundary[1] - sectionDatas[3].scrollBoundary[0];
+  return <Section size={size}>Contact</Section>;
 }
 
 export default Contact;

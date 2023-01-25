@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 /**
- * 0.2
+ * step 1(0.2)
  */
 function BeyondWords({ progress }: { progress: number }) {
   let scale = (-1 / Math.pow(0.5, 2)) * progress + 1;

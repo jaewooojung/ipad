@@ -1,9 +1,9 @@
+import { Section } from "../reuse";
+import { sectionDatas } from "../../data";
+
 function Usecases() {
-  return (
-    <section className="" style={{ height: "200vh" }}>
-      Usecases
-    </section>
-  );
+  const size = sectionDatas[2].scrollBoundary[1] - sectionDatas[2].scrollBoundary[0];
+  return <Section size={size}>UseCases</Section>;
 }
 
 export default Usecases;

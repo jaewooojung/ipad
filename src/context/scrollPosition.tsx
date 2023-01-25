@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 import { ScrollPosition } from "../types";
 
@@ -8,7 +8,7 @@ function noProviderHandler(contextName: string) {
 
 const initialState: { scrollPosition: ScrollPosition; d_setScrollPosition: () => void } = {
   scrollPosition: {
-    sectionId: "intro",
+    sectionIndex: 0,
     progress: 0,
   },
   d_setScrollPosition: () => noProviderHandler("ScrollPositionAPIContext - d_setScrollPosition"),
@@ -33,8 +33,15 @@ export const ScrollPositionProvider = ({ children }: { children: React.ReactNode
   }, []);
 
   return (
-    <ScrollPositionContext.Provider value={scrollPosition}>
-      <ScrollPositionAPIContext.Provider value={{ d_setScrollPosition }}>{children}</ScrollPositionAPIContext.Provider>
-    </ScrollPositionContext.Provider>
+    <ScrollPositionAPIContext.Provider
+      value={useMemo(
+        () => ({
+          d_setScrollPosition,
+        }),
+        []
+      )}
+    >
+      <ScrollPositionContext.Provider value={scrollPosition}>{children}</ScrollPositionContext.Provider>
+    </ScrollPositionAPIContext.Provider>
   );
 };

@@ -1,9 +1,9 @@
 function Section({ size, children }: { size: number; children: React.ReactNode }) {
   return (
     <section
-      className="w-screen"
+      className="w-full"
       style={{
-        height: `${size}00vh`,
+        height: `${size * 100}vh`,
       }}
     >
       {children}
@@ -12,7 +12,7 @@ function Section({ size, children }: { size: number; children: React.ReactNode }
 }
 
 function StickyScreen({ children }: { children: React.ReactNode }) {
-  return <div className="sticky inset-0 w-screen h-screen">{children}</div>;
+  return <div className="sticky inset-0 w-full h-screen">{children}</div>;
 }
 
 export { Section, StickyScreen };

@@ -1,9 +1,9 @@
 import clsx from "clsx";
 
-import { sectionDatas } from "../../../data";
+import { sectionDatas } from "../../data";
 import { useContext } from "react";
-import { ScrollPositionContext } from "./../../../context/scrollPosition";
-import { SectionData } from "../../../types";
+import { ScrollPositionContext } from "../../context/scrollPosition";
+import { SectionData } from "../../types";
 
 function MobileHamburgurButton() {
   return (
@@ -21,7 +21,7 @@ function NavLink({ data, progress }: { data: SectionData; progress: number }) {
   return (
     <li
       className={clsx(
-        "relative px-5 py-1 border-1 rounded-3xl border-white text-xl tracking-widest cursor-pointer overflow-hidden",
+        "relative px-5 py-1 border-1 rounded-3xl border-white text-sm tracking-widest cursor-pointer overflow-hidden",
         "hover:bg-white hover:text-black transition duration-300"
       )}
     >
@@ -39,17 +39,15 @@ function Nav() {
   return (
     <nav>
       <MobileHamburgurButton />
-      <div className={clsx("hidden", "sm:block")}>
-        <ul className={clsx("flex gap-5")}>
-          {sectionDatas.map((sd, i) => (
-            <NavLink
-              key={`NavLink-${i}`}
-              data={sd}
-              progress={scrollPosition.sectionId === sd.id ? scrollPosition.progress : 0}
-            />
-          ))}
-        </ul>
-      </div>
+      <ul className={clsx("hidden gap-5", "sm:flex")}>
+        {sectionDatas.map((sd, i) => (
+          <NavLink
+            key={`NavLink-${i}`}
+            data={sd}
+            progress={scrollPosition.sectionIndex === i ? scrollPosition.progress : 0}
+          />
+        ))}
+      </ul>
     </nav>
   );
 }

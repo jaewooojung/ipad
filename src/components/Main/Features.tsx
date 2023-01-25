@@ -1,9 +1,9 @@
+import { Section } from "../reuse";
+import { sectionDatas } from "../../data";
+
 function Features() {
-  return (
-    <section className="" style={{ height: "200vh" }}>
-      Features
-    </section>
-  );
+  const size = sectionDatas[1].scrollBoundary[1] - sectionDatas[1].scrollBoundary[0];
+  return <Section size={size}>Features</Section>;
 }
 
 export default Features;
